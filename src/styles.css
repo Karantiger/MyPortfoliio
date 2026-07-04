@@ -77,3 +77,30 @@
     font-family: var(--font-display);
   }
 }
+
+@keyframes portrait-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes portrait-spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes portrait-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+}
+
+@utility animate-portrait-spin {
+  animation: portrait-spin 8s linear infinite;
+}
+@utility animate-portrait-ring {
+  animation: portrait-spin 18s linear infinite;
+}
+@utility animate-portrait-ring-slow {
+  animation: portrait-spin-reverse 28s linear infinite;
+}
+@utility animate-portrait-pulse {
+  animation: portrait-pulse 4s ease-in-out infinite;
+}
+
