@@ -87,7 +87,7 @@ function ProjectDetail() {
           <div>
             <h2 className="text-2xl font-bold">Key features</h2>
             <ul className="mt-4 space-y-3">
-              {project.features.map((f) => (
+              {project.features.map((f: string) => (
                 <li key={f} className="flex gap-3 text-sm">
                   <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                   <span className="text-muted-foreground">{f}</span>
@@ -99,7 +99,7 @@ function ProjectDetail() {
           <div>
             <h2 className="text-2xl font-bold">Tech stack</h2>
             <div className="mt-4 flex flex-wrap gap-2">
-              {project.tech.map((t) => (
+              {project.tech.map((t: string) => (
                 <span
                   key={t}
                   className="px-3 py-1.5 text-xs rounded-md border border-border bg-surface text-muted-foreground"
