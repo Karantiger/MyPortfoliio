@@ -1,7 +1,7 @@
-import projectEcommerce from "@/assets/project-ecommerce.jpg";
-import projectTaskmanager from "@/assets/project-taskmanager.jpg";
-import projectAnalytics from "@/assets/project-analytics.jpg";
-import projectPortfolio from "@/assets/project-portfolio.jpg";
+import projectHabitTracker from "/projects/habit.png";
+import projectHealthMonitoring from "/projects/asha.png";
+import projectGeofencingAttendance from "/projects/geo.png";
+import projectHostelLeave from "/projects/hostel.png";
 
 export type Project = {
   slug: string;
@@ -21,89 +21,201 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "ecommerce-platform",
-    title: "E-commerce Platform",
-    tag: "Web App",
-    desc: "Full-stack shopping platform with cart, payments and admin dashboard.",
-    image: projectEcommerce,
+    slug: "smart-community-health-monitoring",
+    title: "Smart Community Health Monitoring System",
+    tag: "SIH 2025 · HealthTech",
+
+    desc:
+      "A digital health monitoring and early warning system designed to support the detection and prevention of water-borne diseases in rural Northeast India.",
+
+    image: projectHealthMonitoring,
+
     year: "2025",
-    role: "Full-stack Developer",
-    client: "Retail Startup",
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    tech: ["React", "Node.js", "PostgreSQL", "Stripe", "TailwindCSS"],
+
+    role: "Frontend & Mobile App Contributor",
+
+    client: "Smart India Hackathon 2025",
+
+    liveUrl: "",
+
+    sourceUrl: "",
+
+    tech: [
+      "React",
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "Supabase",
+      "Firebase",
+      "SQLite",
+      "JavaScript",
+    ],
+
     overview:
-      "A modern e-commerce experience built from the ground up. It covers browsing, cart, checkout with Stripe, order management, and a dashboard for the store owner to manage products and inventory.",
+      "Developed as a solution for Smart India Hackathon problem statement SIH25001 under the Ministry of Development of North Eastern Region. The project includes a web application for District Health Centers and a mobile application for ASHA workers. The system focuses on community-level health data collection, disease monitoring, water-quality reporting, alerts, and supporting early response to possible water-borne disease outbreaks.",
+
     features: [
-      "Product catalog with search and filters",
-      "Secure Stripe checkout with webhooks",
-      "Admin dashboard for products, orders and stock",
-      "Responsive design optimised for mobile",
+      "District Health Center dashboard for monitoring community health data",
+      "Mobile application interface designed for ASHA workers",
+      "Community-level case reporting and health data collection",
+      "Water quality observation and reporting workflow",
+      "Disease case monitoring and early warning alerts",
+      "Dashboard for viewing cases, trends, and health-related insights",
+      "Support for field-level data collection in rural areas",
+      "Role-based workflows for health officials and field workers",
+      "Offline-oriented mobile data collection workflow",
+      "Health awareness and community monitoring features",
+    ],
+  },
+
+  {
+    slug: "habit-tracker",
+    title: "Habit Tracker",
+    tag: "Mobile Application",
+
+    desc:
+      "A cross-platform habit tracking application designed to help users build consistency, track daily progress, and maintain productive routines.",
+
+    image: projectHabitTracker,
+
+    year: "2025",
+
+    role: "Mobile App Developer",
+
+    client: "Personal Project",
+
+    liveUrl: "",
+
+    sourceUrl: "",
+
+    tech: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "SQLite",
+    ],
+
+    overview:
+      "A mobile habit tracking application developed to explore cross-platform mobile development and local data management. The application allows users to create habits, record daily progress, track completion history, and maintain consistency through a simple and focused mobile interface.",
+
+    features: [
+      "Create and manage daily habits",
+      "Mark habits as completed for each day",
+      "Track daily habit progress",
+      "View habit completion history",
+      "Local data storage using SQLite",
+      "Simple and responsive mobile interface",
+      "Cross-platform development with React Native and Expo",
+      "Structured habit management workflow",
     ],
   },
   {
-    slug: "task-manager",
-    title: "Task Manager",
-    tag: "Mobile App",
-    desc: "Cross-platform productivity app with real-time sync and reminders.",
-    image: projectTaskmanager,
-    year: "2024",
-    role: "Mobile Developer",
-    client: "Productivity SaaS",
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    tech: ["React Native", "Expo", "Firebase", "TypeScript"],
-    overview:
-      "A cross-platform task manager that keeps your work in sync across devices. Supports lists, kanban boards, reminders and offline-first editing.",
-    features: [
-      "Offline-first with background sync",
-      "Push notifications and reminders",
-      "Kanban and list views",
-      "Shared workspaces for teams",
-    ],
-  },
-  {
-    slug: "analytics-dashboard",
-    title: "Analytics Dashboard",
-    tag: "Web App",
-    desc: "Data visualization dashboard with charts and live metrics.",
-    image: projectAnalytics,
-    year: "2024",
-    role: "Frontend Engineer",
-    client: "Fintech Company",
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    tech: ["React", "Recharts", "WebSockets", "TailwindCSS"],
-    overview:
-      "A real-time analytics dashboard for a fintech company. Ingests live event data over WebSockets and renders it with performant charts and drill-down views.",
-    features: [
-      "Live metrics via WebSockets",
-      "Interactive charts and drill-downs",
-      "Custom date-range comparisons",
-      "Exportable reports (CSV / PDF)",
-    ],
-  },
-  {
-    slug: "portfolio-cms",
-    title: "Portfolio CMS",
-    tag: "Website",
-    desc: "Custom CMS-powered portfolio site with blog and case studies.",
-    image: projectPortfolio,
-    year: "2023",
-    role: "Full-stack Developer",
-    client: "Creative Agency",
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    tech: ["Next.js", "Sanity", "TailwindCSS", "Vercel"],
-    overview:
-      "A headless-CMS powered portfolio and blog for a creative agency. Editors can manage projects, case studies and posts without touching code.",
-    features: [
-      "Sanity headless CMS integration",
-      "MDX-powered case studies",
-      "Image optimisation and lazy loading",
-      "Excellent Lighthouse scores",
-    ],
-  },
+  slug: "geofencing-ai-attendance",
+  title: "Geofencing AI-Based Attendance Monitoring System",
+  tag: "AI · Attendance Management",
+
+  desc:
+    "A smart web-based attendance monitoring system combining geofencing and AI-powered face recognition to provide secure, location-aware, and automated attendance tracking.",
+
+  image: projectGeofencingAttendance,
+
+  year: "2026",
+
+  role: "Full Stack Developer",
+
+  client: "Academic Project",
+
+  liveUrl: "",
+
+  sourceUrl: "",
+
+  tech: [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Python",
+    "MySQL",
+    "Face Recognition",
+    "Geolocation API",
+  ],
+
+  overview:
+    "The Geofencing AI-Based Attendance Monitoring System is a smart web application designed to automate and secure the attendance process. The system combines real-time geolocation verification with AI-powered face recognition to ensure that attendance can only be recorded when an authorized user is physically present within a predefined geographic boundary. It provides role-based dashboards, attendance records, real-time monitoring, and analytical reports for efficient attendance management.",
+
+  features: [
+    "Geofencing-based attendance verification",
+    "AI-powered face recognition for identity verification",
+    "Location-based attendance restrictions",
+    "Real-time latitude and longitude validation",
+    "Automatic check-in and check-out recording",
+    "Secure user authentication and authorization",
+    "Attendance history and daily status tracking",
+    "Admin dashboard for attendance monitoring",
+    "Employee and student attendance management",
+    "Daily and monthly attendance reports",
+    "Attendance analytics and trend visualization",
+    "Prevention of proxy attendance using face verification",
+    "Real-time attendance status updates",
+    "Centralized MySQL database for attendance records",
+    "Responsive web interface for desktop and mobile devices",
+  ],
+},
+{
+  slug: "hostel-leave-management-system",
+  title: "Hostel Leave Management System",
+  tag: "Hostel Management · Web Application",
+
+  desc:
+    "A role-based hostel management web application designed to digitize leave requests, room management, complaints, notices, mess operations, and overall college hostel administration.",
+
+  image: projectHostelLeave,
+
+  year: "2026",
+
+  role: "Full Stack Developer",
+
+  client: "College Hostel Project",
+
+  liveUrl: "",
+
+  sourceUrl: "",
+
+  tech: [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Python",
+    "MySQL",
+  ],
+
+  overview:
+    "The Hostel Leave Management System is a centralized web application designed to simplify and digitize college hostel operations. The platform provides separate role-based dashboards for Students, Wardens, Hostel Incharges, and Administrators. Students can submit and track leave requests, view hostel information, receive notices, and raise complaints. Wardens and Hostel Incharges can review leave applications, manage students and rooms, monitor complaints, manage mess and maintenance activities, and generate reports. Administrators have complete control over hostels, users, roles, system settings, analytics, and security.",
+
+  features: [
+    "Role-based authentication and authorization",
+    "Separate dashboards for Student, Warden, Hostel Incharge, and Admin",
+    "Online hostel leave application workflow",
+    "Leave request approval and rejection system",
+    "Real-time leave application status tracking",
+    "Student profile and hostel information management",
+    "Room allotment and room occupancy management",
+    "Hostel-wise student record management",
+    "Complaint registration and resolution tracking",
+    "Mess menu and mess information management",
+    "Hostel maintenance request tracking",
+    "Notices and announcement management",
+    "Emergency alerts and important notifications",
+    "Hostel staff management",
+    "Hostel inventory and asset management",
+    "Room occupancy analytics",
+    "Monthly leave request analytics",
+    "Student entry and exit record management",
+    "Administrative reports and hostel statistics",
+    "Centralized management of multiple hostels",
+  ],
+},
+
 ];
 
-export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+export const getProject = (slug: string) =>
+  projects.find((project) => project.slug === slug);
