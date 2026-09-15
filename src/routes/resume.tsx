@@ -34,6 +34,7 @@ import {
   Github as GithubIcon,
   Proportions,
   Bike,
+  ChevronRight,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
@@ -134,6 +135,8 @@ const projects = [
       "Implemented anti-spoofing detection for enhanced security and reliability",
     ],
     technologies: ["AI Face Recognition", "GPS Geofencing", "Google Maps API", "MySQL", "MongoDB", "React"],
+    livelink: "",
+    githublink: "",
   },
   {
     title: "Mobile Habit Tracker Application",
@@ -150,6 +153,8 @@ const projects = [
       "Implemented secure user authentication and data synchronization across devices",
     ],
     technologies: ["React Native", "TypeScript", "Expo Go", "SQLite", "React Navigation", "AsyncStorage"],
+    livelink: "",
+    githublink: "",
   },
 ];
 
@@ -188,16 +193,22 @@ const hobbies = [
 
 // Languages
 const languages = [
-  { name: "English", level: "Professional", flag: "🇬🇧" },
+  { name: "English", level: "Conversational", flag: "🇮🇳" },
   { name: "Hindi", level: "Fluent", flag: "🇮🇳" },
   { name: "Bhojpuri", level: "Fluent", flag: "🇮🇳" },
-  { name: "Gujarati", level: "NA", flag: "🇮🇳" },
 ];
 
 // Additional Info
 const additionalInfo = [
   { icon: Users, label: "Events Attended", value: "5+" },
   { icon: Target, label: "Projects Completed", value: "5+" },
+];
+
+// SVUM Links
+const svumLinks = [
+  { label: "Day 1", url: "https://www.linkedin.com/posts/karantiger_wisperways-svum2026-internationaltradeshow-ugcPost-7427566337511612416-CtOb/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADeOoEsBxUGzwgjClIUmy1I619Yrnrkbzy0" },
+  { label: "Day 2", url: "https://www.linkedin.com/posts/karantiger_honestly-this-feels-very-encouraging-the-ugcPost-7427788015801978880-2Z4O/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADeOoEsBxUGzwgjClIUmy1I619Yrnrkbzy0" },
+  { label: "Day 3", url: "https://www.linkedin.com/posts/karantiger_svum2026-internationaltradeshow-startupjourney-ugcPost-7428128346472960001-ihwv/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADeOoEsBxUGzwgjClIUmy1I619Yrnrkbzy0" },
 ];
 
 // Skill Level Bar Component
@@ -283,7 +294,7 @@ function ResumePage() {
                   </div>
                 </div>
                 <h3 className="mt-4 text-lg font-bold">Karan Kumar Bind</h3>
-                <p className="text-sm text-primary">Java Developer</p>
+                <p className="text-sm text-primary">Java Developer | Co - Founder</p>
                 <div className="mt-3 flex justify-center gap-2">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs text-green-400">
                     <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -297,9 +308,9 @@ function ResumePage() {
             <div className="grid grid-cols-2 gap-3">
               {[
                 { icon: Code2, label: "Projects", value: "5+" },
-                { icon: Trophy, label: "Achievements", value: "3+" },
-                { icon: Star, label: "Skills", value: "9+" },
-                { icon: Users, label: "Collaborations", value: "4+" },
+                { icon: Trophy, label: "Achievements", value: "2+" },
+                { icon: Star, label: "Skills", value: "5+" },
+                { icon: Users, label: "Collaborations", value: "3+" },
               ].map((stat, i) => (
                 <div
                   key={i}
@@ -501,6 +512,31 @@ function ResumePage() {
                         </span>
                       ))}
                     </div>
+                    <div className="mt-5 flex flex-wrap gap-3">
+                      {project.livelink && (
+                        <a
+                          href={project.livelink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group inline-flex items-center gap-2 rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-1.5 text-xs font-semibold text-emerald-400 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-400 hover:bg-emerald-800 hover:text-white hover:shadow-lg hover:shadow-emerald-500/30"
+                        >
+                          <ExternalLink className="h-4 w-4 transition-transform group-hover:rotate-12" />
+                          Live Demo
+                        </a>
+                      )}
+
+                      {project.githublink && (
+                        <a
+                          href={project.githublink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group inline-flex items-center gap-2 rounded-lg border border-slate-600/40 bg-slate-800/60 px-4 py-1.5 text-xs font-semibold text-slate-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-900 hover:text-white hover:shadow-lg hover:shadow-slate-900/40"
+                        >
+                          <GithubIcon className="h-4 w-4 transition-transform group-hover:scale-110" />
+                          GitHub
+                        </a>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -522,6 +558,7 @@ function ResumePage() {
                   </div>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs text-primary">
                     <Award className="h-3.5 w-3.5" />
+                    <span>11 - 13 Feb </span>
                     2026
                   </span>
                 </div>
@@ -558,6 +595,20 @@ function ResumePage() {
                     <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
                     <span>Strengthened communication, presentation, and professional networking skills in an international trade environment</span>
                   </li>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {svumLinks.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group inline-flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/10 px-3 py-2 text-xs font-medium text-primary transition-all hover:-translate-y-0.5 hover:bg-primary hover:text-white"
+                      >
+                        {item.label}
+                        <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                      </a>
+                    ))}
+                  </div>
                 </ul>
               </div>
             </div>

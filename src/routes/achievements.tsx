@@ -58,7 +58,7 @@ interface Achievement {
   date: string;
   location: string;
   description: string;
-  category: "certification" | "competition" | "exhibition" | "recognition";
+  category: "workshop & webinar" | "competition" | "exhibition" | "recognition";
   img: string;
   images: string[];
   stats?: { label: string; value: string }[];
@@ -136,6 +136,47 @@ const achievements: Achievement[] = [
     color: "from-yellow-500 to-orange-500",
     bgGradient: "from-yellow-500/10 to-orange-500/5",
   },
+
+//   {
+//   id: "venture-talks-2026",
+//   title: "Venture Talks 2026",
+//   subtitle: "International Entrepreneurship Webinar Series Participant",
+//   date: "06 – 12 July 2026",
+//   location: "Online",
+//   category: "workshop & webinar",
+
+//   description:
+//     "Participated in Venture Talks 2026, a seven-day international entrepreneurship webinar series organized by IEEE Gujarat Section and IEEE Region 10 ACEI. The program featured industry leaders, startup founders, innovators, and entrepreneurs who shared insights on entrepreneurship, leadership, innovation, startup ecosystems, and business growth.",
+
+//   images: [
+//     "/venture-talks/1.jpg",
+//     "/venture-talks/2.jpg",
+//     "/venture-talks/3.jpg",
+//     "/venture-talks/4.jpg",
+//   ],
+
+//   stats: [
+//     { label: "Duration", value: "7 Days" },
+//     { label: "Sessions", value: "7" },
+//     { label: "Organizer", value: "IEEE" },
+//   ],
+
+//   highlights: [
+//     "Participated in a seven-day international entrepreneurship and innovation webinar series organized by IEEE Gujarat Section and IEEE Region 10 ACEI",
+//     "Learned from startup founders, entrepreneurs, industry experts, innovators, and business leaders through interactive sessions",
+//     "Explored topics including entrepreneurship, startup ecosystems, innovation management, leadership, funding strategies, and business development",
+//     "Gained practical insights into transforming innovative ideas into scalable products and successful startups",
+//     "Attended the Grand Finale and Valedictory Ceremony celebrating a week of learning, collaboration, and entrepreneurial excellence",
+//     "Connected with students, professionals, researchers, entrepreneurs, and innovators from different backgrounds",
+//     "Expanded knowledge of startup culture, emerging technologies, professional networking, and entrepreneurial thinking",
+//     "Strengthened communication, innovation mindset, leadership awareness, and continuous learning through expert-led discussions",
+//   ],
+
+//   img: "/venture-talks.jpg",
+
+//   color: "from-indigo-500 to-violet-500",
+//   bgGradient: "from-indigo-500/10 to-violet-500/5",
+// }
 ];
 
 // Photo Viewer Component - Responsive & Smaller
@@ -592,7 +633,7 @@ const AchievementCard: React.FC<{ achievement: Achievement; index: number }> = (
                     transition-colors
                     group-hover/item:text-foreground
                     sm:text-sm
-                    md:text-base
+                    md:text-sm
                 "
                 >
                 {highlight}
@@ -679,6 +720,7 @@ const CategoryFilter: React.FC<{ active: string; onChange: (category: string) =>
     { value: "exhibition", label: "Exhibitions" },
     { value: "competition", label: "Competitions" },
     { value: "recognition", label: "Recognitions" },
+    { value: "workshop & webinar", label: "Workshop & Webinar" }
   ];
 
   return (

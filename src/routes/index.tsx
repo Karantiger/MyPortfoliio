@@ -26,8 +26,7 @@ import {
   LoaderCircle,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-
-import heroPortrait from "/heroimg.png";
+import heroPortrait from "/myimg.png";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { projects } from "@/lib/portfolio-data";
@@ -139,6 +138,13 @@ const AnimatedCounter: React.FC<{ target: number; suffix?: string; duration?: nu
     </span>
   );
 };
+
+const roles = [
+  "Computer Science Student",
+  "Java Developer",
+  // "Co-founder",
+];
+
 
 // Stat Card Component - FIXED
 const StatCard: React.FC<StatCardProps> = ({ icon: Icon, value, label, suffix = "", delay = 0 }) => {
@@ -382,6 +388,16 @@ useEffect(() => {
   return () => clearTimeout(timer);
 }, [isSubmitted]);
 
+const [currentRole, setCurrentRole] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentRole((prev) => (prev + 1) % roles.length);
+  }, 2500);
+
+  return () => clearInterval(interval);
+}, []);
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <SiteHeader />
@@ -414,11 +430,11 @@ useEffect(() => {
               Bind.
             </span>
           </h1>
-
-          <h2 className="mt-5 max-w-xl text-xl font-semibold leading-relaxed text-muted-foreground sm:text-2xl">
-            Computer Science Student{" "}
-            <span className="text-muted-foreground">&</span>{" "}
-            <span className="bg-gradient-to-r from-primary via-primary to-primary/50 bg-clip-text font-bold text-transparent">
+          
+          <h2 className="mt-5 max-w-2xl text-xl font-medium leading-relaxed text-muted-foreground sm:text-2xl">
+            Computer Science Student
+            <span className="mx-2 text-primary/80">&amp;</span>
+            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text font-semibold text-transparent">
               Java Developer
             </span>
           </h2>
@@ -463,22 +479,23 @@ useEffect(() => {
 
         {/* HERO PORTRAIT */}
 
-        <div className="relative flex items-center justify-center">
-          <div className="relative aspect-square w-[250px] max-w-[75vw] sm:w-[320px] lg:w-[400px]">
-            <div className="absolute inset-0 animate-portrait-pulse rounded-full bg-primary/20 blur-3xl" />
-            <div className="absolute -inset-3 animate-portrait-spin rounded-full bg-[conic-gradient(from_0deg,transparent,var(--color-primary),transparent_60%)] opacity-60" />
-            <div className="absolute inset-1 rounded-full bg-background" />
-            <div className="absolute inset-2 animate-portrait-ring rounded-full border border-primary/40" />
-            <div className="absolute inset-6 animate-portrait-ring-slow rounded-full border border-dashed border-primary/20" />
-            <img
-              src={heroPortrait}
-              alt="Karan Kumar Bind"
-              width={480}
-              height={480}
-              className="relative h-full w-full rounded-full border-2 border-white/40 object-cover transition-transform group-hover:scale-105"
-            />
-          </div>
+      <div className="relative flex items-center justify-center">
+        <div className="relative aspect-square w-[250px] max-w-[75vw] sm:w-[320px] lg:w-[400px]">
+          
+          {/* Outer glow */}
+          <div className="absolute -inset-3 rounded-2xl bg-primary/20 blur-2xl" />
+
+          {/* Image */}
+          <img
+            src={heroPortrait}
+            alt="Karan Kumar Bind"
+            width={480}
+            height={480}
+            className="relative h-full w-full rounded-2xl border-2 border-white/40 object-cover transition-transform group-hover:scale-105"
+          />
+
         </div>
+      </div>
       </section>
 
       {/* ==================================
@@ -1381,7 +1398,6 @@ useEffect(() => {
             </form>
           </div>
         </div>
-
         <SiteFooter />
       </section>
     </div>

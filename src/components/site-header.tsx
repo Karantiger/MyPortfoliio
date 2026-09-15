@@ -106,9 +106,21 @@ export function SiteHeader() {
             <button
               type="button"
               aria-label="Open navigation menu"
-              className="inline-flex h-10 w-10 cursor-pointer items-center justify-center transition-colors "
+              className="
+                inline-flex
+                h-10
+                w-10
+                cursor-pointer
+                items-center
+                justify-center
+                rounded-lg
+                transition-colors
+                hover:bg-primary/10
+                hover:text-primary
+              "
             >
               <TextAlignEnd className="h-6 w-6" />
+
               <span className="sr-only">
                 Open menu
               </span>
@@ -125,8 +137,10 @@ export function SiteHeader() {
               </SheetTitle>
             </SheetHeader>
 
+            {/* MOBILE LINKS */}
+
             <nav className="mt-8 flex flex-col gap-2 text-base">
-              {links.map((link) => (
+              {links.map((link, index) => (
                 <Link
                   key={link.to}
                   to={link.to}
@@ -135,27 +149,64 @@ export function SiteHeader() {
                     className:
                       "bg-primary/10 text-primary",
                   }}
-                  className="rounded-lg px-4 py-3 transition-colors hover:bg-primary/10 hover:text-primary"
+                  className="
+                    rounded-lg
+                    px-4
+                    py-3
+                    transition-all
+                    duration-300
+                    hover:translate-x-1
+                    hover:bg-primary/10
+                    hover:text-primary
+                  "
+                  style={{
+                    transitionDelay: `${index * 40}ms`,
+                  }}
                 >
-                  {link.label}
+                  <span className="flex items-center justify-between">
+                    {link.label}
+
+                    <span className="text-xs text-muted-foreground">
+                      0{index + 1}
+                    </span>
+                  </span>
                 </Link>
               ))}
 
               <Link
                 to="/"
                 hash="contacts"
-                className="rounded-lg px-4 py-3 transition-colors hover:bg-primary/10 hover:text-primary"
+                className="
+                  rounded-lg
+                  px-4
+                  py-3
+                  transition-all
+                  duration-300
+                  hover:translate-x-1
+                  hover:bg-primary/10
+                  hover:text-primary
+                "
               >
-                Contact
+                <span className="flex items-center justify-between">
+                  Contact
+
+                  <span className="text-xs text-muted-foreground">
+                    08
+                  </span>
+                </span>
               </Link>
             </nav>
+
+            {/* MOBILE FOOTER */}
+
             <div className="absolute bottom-8 left-0 right-0 px-6">
-              <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
               <p className="mt-4 text-center text-xs text-muted-foreground">
-                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text font-medium text-transparent">
                   Karan Kumar Bind
                 </span>
-                {' '}— Building digital experiences
+                {" "}— Building digital experiences
               </p>
             </div>
           </SheetContent>

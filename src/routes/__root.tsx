@@ -10,7 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-
+import { AlertTriangle, RefreshCw, Home } from "lucide-react";
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -38,30 +38,54 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4">
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute -left-32 top-0 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+
+      <div className="relative w-full max-w-lg rounded-3xl border border-border bg-surface p-8 text-center shadow-xl">
+        {/* Icon */}
+        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
+          <AlertTriangle className="h-10 w-10 text-primary" />
+        </div>
+
+        {/* Heading */}
+        <h1 className="mt-6 text-3xl font-bold tracking-tight">
           This page didn't load
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+
+        <p className="mt-4 leading-7 text-muted-foreground">
+          Something went wrong while loading this page. You can try again or
+          return to the homepage.
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+
+        {/* Buttons */}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <button
             onClick={() => {
-              router.invalidate();
               reset();
+              router.invalidate();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 cursor-pointer"
+            className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"
           >
-            Try again
+            <RefreshCw className="h-4 w-4" />
+            Try Again
           </button>
+
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
           >
-            Go home
+            <Home className="h-4 w-4" />
+            Go Home
           </a>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-8 border-t border-border pt-5">
+          <p className="text-xs text-muted-foreground">
+            If this problem persists, please refresh the page or try again later.
+          </p>
         </div>
       </div>
     </div>
