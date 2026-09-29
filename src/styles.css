@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 @source "../src";
 @import "tw-animate-css";
@@ -66,6 +67,7 @@
 @layer base {
   * {
     border-color: var(--color-border);
+    font-family: "Outfit", sans-serif;
   }
 
   html {
@@ -77,11 +79,11 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-display);
+    font-family: "Outfit", sans-serif;
   }
 
   .admin-shell {
-    font-family: "DM Sans", "Poppins", sans-serif;
+    font-family: "Outfit", sans-serif;
   }
 
   .admin-card {

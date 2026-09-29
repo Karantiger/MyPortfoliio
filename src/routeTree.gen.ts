@@ -9,39 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SkillsRouteImport } from './routes/skills'
-import { Route as ResumeRouteImport } from './routes/resume'
-import { Route as ProjectsRouteImport } from './routes/projects'
-import { Route as ExperienceRouteImport } from './routes/experience'
-import { Route as EducationRouteImport } from './routes/education'
-import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjectsSlugRouteImport } from './routes/projects_.$slug'
+import { Route as AchievementsRouteImport } from './routes/achievements'
+import { Route as EducationRouteImport } from './routes/education'
+import { Route as ExperienceRouteImport } from './routes/experience'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ResumeRouteImport } from './routes/resume'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as ProjectsSlugRouteImport } from './routes/projects_.$slug'
 
-const SkillsRoute = SkillsRouteImport.update({
-  id: '/skills',
-  path: '/skills',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResumeRoute = ResumeRouteImport.update({
-  id: '/resume',
-  path: '/resume',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsRoute = ProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExperienceRoute = ExperienceRouteImport.update({
-  id: '/experience',
-  path: '/experience',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EducationRoute = EducationRouteImport.update({
-  id: '/education',
-  path: '/education',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AchievementsRoute = AchievementsRouteImport.update({
@@ -49,19 +31,49 @@ const AchievementsRoute = AchievementsRouteImport.update({
   path: '/achievements',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const EducationRoute = EducationRouteImport.update({
+  id: '/education',
+  path: '/education',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
-  id: '/projects_/$slug',
-  path: '/projects/$slug',
+const ExperienceRoute = ExperienceRouteImport.update({
+  id: '/experience',
+  path: '/experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResumeRoute = ResumeRouteImport.update({
+  id: '/resume',
+  path: '/resume',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsRoute = SkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiContactRoute = ApiContactRouteImport.update({
   id: '/api/contact',
   path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/projects_/$slug',
+  path: '/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -72,6 +84,8 @@ export interface FileRoutesByFullPath {
   '/experience': typeof ExperienceRoute
   '/projects': typeof ProjectsRoute
   '/resume': typeof ResumeRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skills': typeof SkillsRoute
   '/api/contact': typeof ApiContactRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -83,6 +97,8 @@ export interface FileRoutesByTo {
   '/experience': typeof ExperienceRoute
   '/projects': typeof ProjectsRoute
   '/resume': typeof ResumeRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skills': typeof SkillsRoute
   '/api/contact': typeof ApiContactRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -95,6 +111,8 @@ export interface FileRoutesById {
   '/experience': typeof ExperienceRoute
   '/projects': typeof ProjectsRoute
   '/resume': typeof ResumeRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skills': typeof SkillsRoute
   '/api/contact': typeof ApiContactRoute
   '/projects_/$slug': typeof ProjectsSlugRoute
@@ -108,6 +126,8 @@ export interface FileRouteTypes {
     | '/experience'
     | '/projects'
     | '/resume'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/skills'
     | '/api/contact'
     | '/projects/$slug'
@@ -119,6 +139,8 @@ export interface FileRouteTypes {
     | '/experience'
     | '/projects'
     | '/resume'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/skills'
     | '/api/contact'
     | '/projects/$slug'
@@ -130,6 +152,8 @@ export interface FileRouteTypes {
     | '/experience'
     | '/projects'
     | '/resume'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/skills'
     | '/api/contact'
     | '/projects_/$slug'
@@ -142,6 +166,8 @@ export interface RootRouteChildren {
   ExperienceRoute: typeof ExperienceRoute
   ProjectsRoute: typeof ProjectsRoute
   ResumeRoute: typeof ResumeRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SkillsRoute: typeof SkillsRoute
   ApiContactRoute: typeof ApiContactRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -149,39 +175,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/skills': {
-      id: '/skills'
-      path: '/skills'
-      fullPath: '/skills'
-      preLoaderRoute: typeof SkillsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/resume': {
-      id: '/resume'
-      path: '/resume'
-      fullPath: '/resume'
-      preLoaderRoute: typeof ResumeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects': {
-      id: '/projects'
-      path: '/projects'
-      fullPath: '/projects'
-      preLoaderRoute: typeof ProjectsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/experience': {
-      id: '/experience'
-      path: '/experience'
-      fullPath: '/experience'
-      preLoaderRoute: typeof ExperienceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/education': {
-      id: '/education'
-      path: '/education'
-      fullPath: '/education'
-      preLoaderRoute: typeof EducationRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/achievements': {
@@ -191,18 +189,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AchievementsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/education': {
+      id: '/education'
+      path: '/education'
+      fullPath: '/education'
+      preLoaderRoute: typeof EducationRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects_/$slug': {
-      id: '/projects_/$slug'
-      path: '/projects/$slug'
-      fullPath: '/projects/$slug'
-      preLoaderRoute: typeof ProjectsSlugRouteImport
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resume': {
+      id: '/resume'
+      path: '/resume'
+      fullPath: '/resume'
+      preLoaderRoute: typeof ResumeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills': {
+      id: '/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof SkillsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/contact': {
@@ -210,6 +243,13 @@ declare module '@tanstack/react-router' {
       path: '/api/contact'
       fullPath: '/api/contact'
       preLoaderRoute: typeof ApiContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects_/$slug': {
+      id: '/projects_/$slug'
+      path: '/projects/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -222,6 +262,8 @@ const rootRouteChildren: RootRouteChildren = {
   ExperienceRoute: ExperienceRoute,
   ProjectsRoute: ProjectsRoute,
   ResumeRoute: ResumeRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SkillsRoute: SkillsRoute,
   ApiContactRoute: ApiContactRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,

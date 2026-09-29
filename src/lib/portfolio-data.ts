@@ -2,6 +2,7 @@ import projectHabitTracker from "/projects/habit.png";
 import projectHealthMonitoring from "/projects/asha.png";
 import projectGeofencingAttendance from "/projects/geo.png";
 import projectHostelLeave from "/projects/hostel.png";
+import projectSortLab from "/projects/sortimg.png";
 
 export type Project = {
   slug: string;
@@ -212,6 +213,54 @@ export const projects: Project[] = [
     "Student entry and exit record management",
     "Administrative reports and hostel statistics",
     "Centralized management of multiple hostels",
+  ],
+},
+{
+  slug: "sortlab",
+  title: "SortLab",
+  tag: "Algorithm Visualization · Web Application",
+
+  desc:
+    "An interactive sorting algorithm visualization web application designed to help users understand and compare sorting algorithms through real-time visual demonstrations.",
+
+  image: projectSortLab,
+
+  year: "2026",
+  role: "Full Stack Developer",
+  client: "Personal Project",
+
+  liveUrl: "https://sortslab.vercel.app/",
+  sourceUrl: "https://github.com/Karantiger/sortlab",
+
+  tech: [
+    "React",
+    "JavaScript",
+    "Tailwind CSS",
+    "TypeScript",
+    "React Router",
+    "Vite",
+    "HTML",
+    "CSS",
+  ],
+
+  overview:
+    "SortLab is an interactive web application focused on visualizing sorting algorithms in an intuitive and engaging way. The platform allows users to observe how different sorting algorithms process and rearrange data step by step. Instead of relying only on theoretical explanations, SortLab provides a visual representation of algorithm execution, making concepts such as comparisons, swaps, iterations, and sorting efficiency easier to understand. The application is designed as an educational and developer-focused tool for students and anyone learning data structures and algorithms.",
+
+  features: [
+    "Interactive sorting algorithm visualization",
+    "Real-time visual representation of sorting operations",
+    "Step-by-step visualization of array elements",
+    "Visual comparison of sorting techniques",
+    "Dynamic data visualization",
+    "Randomized array generation",
+    "Clear representation of element comparisons and swaps",
+    "Interactive sorting controls",
+    "User-friendly algorithm learning interface",
+    "Educational visualization of sorting concepts",
+    "Responsive web application interface",
+    "Performance-focused client-side execution",
+    "Helps understand algorithm execution visually",
+    "Useful for learning data structures and algorithms",
   ],
 },
 

@@ -29,6 +29,7 @@ import { useState, useEffect, useRef } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHeader } from "@/components/page-header";
+import { educationSeed as education } from "@/content/education";
 
 export const Route = createFileRoute("/education")({
   head: () => ({
@@ -79,47 +80,6 @@ const useIntersectionObserver = (options = {}) => {
   return { ref, isVisible };
 };
 
-const education = [
-  {
-    type: "Undergraduate",
-    institution: "Indrashil University",
-    degree: "Bachelor of Technology in Computer Science",
-    period: "2023 — June 2027",
-    status: "Currently Pursuing",
-    scoreLabel: "CGPA",
-    score: "8.35 / 10",
-    logo: "/iu.jpg",
-    detail:
-      "Currently pursuing a Bachelor of Technology in Computer Science, building a strong foundation in programming, software development, databases, and core computer science concepts.",
-    highlights: ["Dean's List", "Academic Excellence"],
-  },
-  {
-    type: "Senior Secondary",
-    institution: "Radhakrishna Academy",
-    degree: "Senior School — PCM",
-    period: "2022",
-    status: "Completed",
-    scoreLabel: "Percentage",
-    score: "65.20%",
-    logo: "/rk.jpg",
-    detail:
-      "Completed Senior Secondary education with Physics, Chemistry, and Mathematics, developing analytical thinking, mathematical reasoning, and problem-solving skills.",
-    highlights: ["Science Stream", "Mathematics Focus"],
-  },
-  {
-    type: "Secondary",
-    institution: "Manasthali Education Centre",
-    degree: "Secondary School",
-    period: "2020",
-    status: "Completed",
-    scoreLabel: "Percentage",
-    score: "72.00%",
-    logo: "/manas.png",
-    detail:
-      "Completed Secondary School education with a focus on core academic subjects and foundational learning.",
-    highlights: ["All Subjects", "Foundation"],
-  },
-];
 
 const coursework = [
   { name: "Data Structures & Algorithms", icon: Layers3 },
@@ -158,7 +118,7 @@ function EducationPage() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-12">
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute bottom-0 left-[19px] top-0 hidden w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent sm:block" />
+          <div className="absolute bottom-0 left-4.75 top-0 hidden w-px bg-linear-to-b from-primary/60 via-primary/30 to-transparent sm:block" />
 
           <div className="space-y-10 sm:space-y-12">
             {education.map((item, index) => (
@@ -178,7 +138,7 @@ function EducationPage() {
                 {/* Education Card */}
                 <div className="group relative overflow-hidden rounded-2xl border border-border/50 bg-surface/30 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10">
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   {/* Card Header */}
                   <div className="relative border-b border-border/50 p-5 sm:p-7">
@@ -334,7 +294,7 @@ function EducationPage() {
             </div>
 
             {/* Divider */}
-            <div className="my-8 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+            <div className="my-8 h-px bg-linear-to-r from-primary/30 to-transparent" />
 
             {/* Coursework Grid */}
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -364,7 +324,7 @@ function EducationPage() {
                     </div>
 
                     {/* Hover Line */}
-                    <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-primary to-primary/60 transition-all duration-500 group-hover:w-full" />
+                    <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-linear-to-r from-primary to-primary/60 transition-all duration-500 group-hover:w-full" />
                   </article>
                 );
               })}
@@ -453,7 +413,7 @@ function EducationPage() {
                       </span>
 
                       {/* Bottom Hover Line */}
-                      <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-primary to-primary/60 transition-all duration-500 group-hover:w-full" />
+                      <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-linear-to-r from-primary to-primary/60 transition-all duration-500 group-hover:w-full" />
                     </article>
                   );
                 })}

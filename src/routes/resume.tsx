@@ -35,6 +35,8 @@ import {
   Proportions,
   Bike,
   ChevronRight,
+  Instagram,
+  ChevronDown,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
@@ -246,6 +248,9 @@ const SkillLevel: React.FC<{ skill: { name: string; level: number }; index: numb
 };
 
 function ResumePage() {
+  const [openProject, setOpenProject] = useState<number | null>(null);
+  const [openExposure, setOpenExposure] = useState(false);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <SiteHeader />
@@ -336,7 +341,7 @@ function ResumePage() {
               </a>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span>Rakhial, Ahmedabad</span>
+                <span>Ahmedabad, Gujarat, India</span>
               </div>
               <div className="flex gap-2 pt-2">
                 <a href="https://linkedin.com/in/karantiger/" target="_blank" rel="noreferrer" className="rounded-lg border border-border p-2 text-muted-foreground transition-all hover:border-primary/30 hover:bg-primary/10 hover:text-foreground">
@@ -344,6 +349,9 @@ function ResumePage() {
                 </a>
                 <a href="https://github.com/karantiger" target="_blank" rel="noreferrer" className="rounded-lg border border-border p-2 text-muted-foreground transition-all hover:border-primary/30 hover:bg-primary/10 hover:text-foreground">
                   <Github className="h-4 w-4" />
+                </a>
+                <a href="https://www.instagram.com/karan.thetiger/" target="_blank" rel="noreferrer" className="rounded-lg border border-border p-2 text-muted-foreground transition-all hover:border-primary/30 hover:bg-primary/10 hover:text-foreground">  
+                <Instagram className="h-4 w-4" />
                 </a>
               </div>
             </div>
@@ -490,55 +498,119 @@ function ResumePage() {
             <div className="rounded-2xl border border-border bg-surface/50 p-6 backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-5">
                 <Code2 className="h-5 w-5 text-primary" />
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">Projects</h2>
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">
+                  Projects
+                </h2>
               </div>
-              <div className="space-y-5">
-                {projects.map((project) => (
-                  <div key={project.title} className="rounded-xl border border-border bg-background/50 p-5 transition-all hover:border-primary/30">
-                    <h3 className="text-base font-semibold">{project.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{project.description}</p>
-                    <ul className="mt-4 space-y-2">
-                      {project.points.map((point) => (
-                        <li key={point} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                          <Zap className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-4 flex flex-wrap gap-1.5 pt-3 border-t border-border/50">
-                      {project.technologies.map((tech) => (
-                        <span key={tech} className="rounded bg-primary/5 px-2.5 py-1 text-xs text-primary/80">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="mt-5 flex flex-wrap gap-3">
-                      {project.livelink && (
-                        <a
-                          href={project.livelink}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="group inline-flex items-center gap-2 rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-1.5 text-xs font-semibold text-emerald-400 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-400 hover:bg-emerald-800 hover:text-white hover:shadow-lg hover:shadow-emerald-500/30"
-                        >
-                          <ExternalLink className="h-4 w-4 transition-transform group-hover:rotate-12" />
-                          Live Demo
-                        </a>
-                      )}
 
-                      {project.githublink && (
-                        <a
-                          href={project.githublink}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="group inline-flex items-center gap-2 rounded-lg border border-slate-600/40 bg-slate-800/60 px-4 py-1.5 text-xs font-semibold text-slate-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-900 hover:text-white hover:shadow-lg hover:shadow-slate-900/40"
-                        >
-                          <GithubIcon className="h-4 w-4 transition-transform group-hover:scale-110" />
-                          GitHub
-                        </a>
-                      )}
+              <div className="space-y-3">
+                {projects.map((project, index) => {
+                  const isOpen = openProject === index;
+
+                  return (
+                    <div
+                      key={project.title}
+                      className="rounded-xl border border-border bg-background/50 overflow-hidden transition-all duration-300"
+                    >
+                      {/* Project Title */}
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenProject(isOpen ? null : index)
+                        }
+                        className="w-full flex items-center justify-between gap-4 p-3 text-left transition-all hover:bg-primary/5 cursor-pointer"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                              isOpen
+                                ? "bg-primary shadow-[0_0_10px] shadow-primary"
+                                : "bg-muted-foreground/40"
+                            }`}
+                          />
+
+                          <h3 className="text-base font-semibold">
+                            {project.title}
+                          </h3>
+                        </div>
+
+                        <ChevronDown
+                          className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300 ${
+                            isOpen ? "rotate-180 text-primary" : ""
+                          }`}
+                        />
+                      </button>
+
+                      {/* Project Details */}
+                      <div
+                        className={`grid transition-all duration-300 ease-in-out ${
+                          isOpen
+                            ? "grid-rows-[1fr] opacity-100"
+                            : "grid-rows-[0fr] opacity-0"
+                        }`}
+                      >
+                        <div className="overflow-hidden">
+                          <div className="border-t border-border/50 p-5">
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              {project.description}
+                            </p>
+
+                            <ul className="mt-4 space-y-2">
+                              {project.points.map((point) => (
+                                <li
+                                  key={point}
+                                  className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                                >
+                                  <Zap className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                                  <span>{point}</span>
+                                </li>
+                              ))}
+                            </ul>
+
+                            {/* Technologies */}
+                            <div className="mt-4 flex flex-wrap gap-1.5 pt-3 border-t border-border/50">
+                              {project.technologies.map((tech) => (
+                                <span
+                                  key={tech}
+                                  className="rounded bg-primary/5 px-2.5 py-1 text-xs text-primary/80"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+
+                            {/* Links */}
+                            <div className="mt-5 flex flex-wrap gap-3">
+                              {project.livelink && (
+                                <a
+                                  href={project.livelink}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="group inline-flex items-center gap-2 rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-1.5 text-xs font-semibold text-emerald-400 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-400 hover:bg-emerald-800 hover:text-white hover:shadow-lg hover:shadow-emerald-500/30"
+                                >
+                                  <ExternalLink className="h-4 w-4 transition-transform group-hover:rotate-12" />
+                                  Live Demo
+                                </a>
+                              )}
+
+                              {project.githublink && (
+                                <a
+                                  href={project.githublink}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="group inline-flex items-center gap-2 rounded-lg border border-slate-600/40 bg-slate-800/60 px-4 py-1.5 text-xs font-semibold text-slate-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-900 hover:text-white hover:shadow-lg hover:shadow-slate-900/40"
+                                >
+                                  <GithubIcon className="h-4 w-4 transition-transform group-hover:scale-110" />
+                                  GitHub
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -546,70 +618,151 @@ function ResumePage() {
             <div className="rounded-2xl border border-border bg-surface/50 p-6 backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-4">
                 <Trophy className="h-5 w-5 text-primary" />
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">Industry Exposure</h2>
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">
+                  Industry Exposure
+                </h2>
               </div>
-              
+
               {/* SVUM 2026 */}
-              <div className="rounded-xl border border-border bg-background/50 p-4 mb-4">
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <div>
-                    <h3 className="font-semibold">SVUM 2026 Trade Show</h3>
-                    <p className="text-sm text-primary">Product Showcase Participant</p>
+              <div className="rounded-xl border border-border bg-background/50 overflow-hidden transition-all duration-300">
+                
+                {/* Header / Dropdown Button */}
+                <button
+                  type="button"
+                  onClick={() => setOpenExposure(!openExposure)}
+                  className="w-full flex flex-wrap items-center justify-between gap-3 p-4 text-left transition-all hover:bg-primary/5 cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`h-2 w-2 rounded-full shrink-0 transition-all duration-300 ${
+                        openExposure
+                          ? "bg-primary shadow-[0_0_10px] shadow-primary"
+                          : "bg-muted-foreground/40"
+                      }`}
+                    />
+
+                    <div>
+                      <h3 className="font-semibold">
+                        SVUM 2026 Trade Show
+                      </h3>
+
+                      <p className="text-sm text-primary">
+                        Product Showcase Participant
+                      </p>
+                    </div>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs text-primary">
-                    <Award className="h-3.5 w-3.5" />
-                    <span>11 - 13 Feb </span>
-                    2026
-                  </span>
+
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs text-primary">
+                      <Award className="h-3.5 w-3.5" />
+                      <span>11 - 13 Feb 2026</span>
+                    </span>
+
+                    <ChevronDown
+                      className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300 ${
+                        openExposure ? "rotate-180 text-primary" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {/* Dropdown Content */}
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    openExposure
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="border-t border-border/50 p-4">
+                      
+                      <ul className="space-y-2.5">
+                        <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span>
+                            Participated in SVUM 2026 Trade Show and engaged with
+                            industry professionals and business visitors
+                          </span>
+                        </li>
+
+                        <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span>
+                            Presented product concepts and discussed technical
+                            implementation with diverse audiences
+                          </span>
+                        </li>
+
+                        <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span>
+                            Gained valuable feedback and insights from industry
+                            experts and potential stakeholders
+                          </span>
+                        </li>
+
+                        <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span>
+                            Built professional connections and explored potential
+                            collaboration opportunities with industry representatives
+                          </span>
+                        </li>
+
+                        <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span>
+                            Represented and showcased WisperWays - a travel and
+                            tourism platform to international delegates and industry
+                            professionals
+                          </span>
+                        </li>
+
+                        <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span>
+                            Conducted product demonstrations and technical discussions
+                            with 50+ delegates from 10+ countries
+                          </span>
+                        </li>
+
+                        <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span>
+                            Received multiple business offers, collaboration proposals,
+                            and expressions of interest from industry professionals
+                          </span>
+                        </li>
+
+                        <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span>
+                            Strengthened communication, presentation, and professional
+                            networking skills in an international trade environment
+                          </span>
+                        </li>
+                      </ul>
+
+                      {/* Links */}
+                      <div className="mt-5 flex flex-wrap gap-3 pt-3 border-t border-border/50">
+                        {svumLinks.map((item) => (
+                          <a
+                            key={item.label}
+                            href={item.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group inline-flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/10 px-3 py-2 text-xs font-medium text-primary transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20"
+                          >
+                            {item.label}
+                            <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                          </a>
+                        ))}
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
-                <ul className="mt-3 space-y-2">
-                  <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                    <span>Participated in SVUM 2026 Trade Show and engaged with industry professionals and business visitors</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                    <span>Presented product concepts and discussed technical implementation with diverse audiences</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                    <span>Gained valuable feedback and insights from industry experts and potential stakeholders</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                    <span>Built professional connections and explored potential collaboration opportunities with industry representatives</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                    <span>Represented and showcased WisperWays - a travel and tourism platform to international delegates and industry professionals</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                    <span>Conducted product demonstrations and technical discussions with 50+ delegates from 10+ countries</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                    <span>Received multiple business offers, collaboration proposals, and expressions of interest from industry professionals</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                    <span>Strengthened communication, presentation, and professional networking skills in an international trade environment</span>
-                  </li>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    {svumLinks.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group inline-flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/10 px-3 py-2 text-xs font-medium text-primary transition-all hover:-translate-y-0.5 hover:bg-primary hover:text-white"
-                      >
-                        {item.label}
-                        <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                      </a>
-                    ))}
-                  </div>
-                </ul>
               </div>
             </div>
 
