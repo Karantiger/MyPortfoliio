@@ -94,7 +94,7 @@ const useIntersectionObserver = (options = {}) => {
 };
 
 const skills = [
-  { name: "Java", level: 85 },
+  { name: "Java", level: 50 },
   { name: "HTML5", level: 90 },
   { name: "CSS3", level: 85 },
   { name: "JavaScript", level: 75 },
@@ -140,6 +140,29 @@ const projects = [
     livelink: "",
     githublink: "",
   },
+  
+  {
+    title: "WisperWays - AI-Powered Travel & Tourism Platform",
+    description:
+      "WisperWays is an India-focused travel and tourism platform designed to help travelers discover curated destinations, personalized trips, local guides, and authentic cultural experiences. It features an AI-powered trip planner, curated travel packages, destination discovery, and a price-match guarantee to make travel planning more convenient and transparent.",
+    points: [
+      "Developed a travel discovery platform featuring destinations and curated travel experiences across India",
+      "Integrated an AI-powered trip planner to generate personalized itineraries with attractions, restaurants, and accommodation suggestions",
+      "Created destination and travel package discovery experiences for different traveler preferences",
+      "Designed features to connect travelers with local guides and authentic cultural experiences",
+      "Presented a price-match guarantee offering to support transparent travel planning",
+      "Built responsive user experiences for travelers browsing on desktop and mobile devices",
+      "Focused on community-driven tourism and helping travelers discover lesser-known destinations",
+    ],
+    technologies: [
+      "AI Trip Planning",
+      "Travel Technology",
+      "Responsive Web Design",
+    ],
+    livelink: "https://wisperways.vercel.app/",
+    githublink: "",
+  },
+
   {
     title: "Mobile Habit Tracker Application",
     description:
@@ -299,7 +322,7 @@ function ResumePage() {
                   </div>
                 </div>
                 <h3 className="mt-4 text-lg font-bold">Karan Kumar Bind</h3>
-                <p className="text-sm text-primary">Java Developer | Co - Founder</p>
+                <p className="text-sm text-primary">Java Developer</p>
                 <div className="mt-3 flex justify-center gap-2">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs text-green-400">
                     <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />

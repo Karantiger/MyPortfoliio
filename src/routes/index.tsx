@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Karan Kumar Bind - Java Developer",
+        title: "Karan Kumar Bind",
       },
       {
         name: "description",
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Karan Kumar Bind - Java Developer",
+        content: "Karan Kumar Bind",
       },
       {
         property: "og:description",
@@ -434,7 +434,7 @@ useEffect(() => {
           <h2 className="mt-5 max-w-2xl text-xl font-medium leading-relaxed text-muted-foreground sm:text-2xl">
             Computer Science Student
             <span className="mx-2 text-primary/80">&amp;</span>
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text font-semibold text-transparent">
+            <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text font-semibold text-transparent">
               Java Developer
             </span>
           </h2>
