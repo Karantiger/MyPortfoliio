@@ -37,6 +37,7 @@ import {
   ChevronRight,
   Instagram,
   ChevronDown,
+  GitBranch,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
@@ -93,16 +94,46 @@ const useIntersectionObserver = (options = {}) => {
   return { ref, isVisible };
 };
 
-const skills = [
-  { name: "Java", level: 50 },
-  { name: "HTML5", level: 90 },
-  { name: "CSS3", level: 85 },
-  { name: "JavaScript", level: 75 },
-  { name: "Bootstrap", level: 80 },
-  { name: "MySQL", level: 75 },
-  { name: "Git", level: 82 },
-  { name: "GitHub", level: 80 },
-  { name: "VS Code", level: 85 },
+const skillCategories = [
+  {
+    title: "Programming Languages",
+    icon: Code2,
+    skills: [
+      { name: "Java", level: 50 },
+      {name: "C", level: 60 },
+      { name: "JavaScript", level: 75 },
+    ],
+  },
+  {
+    title: "Frontend Development",
+    icon: Sparkles,
+    skills: [
+      { name: "HTML5", level: 90 },
+      { name: "CSS3", level: 85 },
+      { name: "React", level: 50 },
+      { name: "React Native", level: 50 },
+      { name: "Tailwind CSS", level: 70 },
+      { name: "Bootstrap", level: 80 },
+    ],
+  },
+  {
+    title: "Backend & Database",
+    icon: Shield,
+    skills: [
+      { name: "Node.js", level: 50 },
+      { name: "MySQL", level: 75 },
+    ],
+  },
+  {
+    title: "Tools & Version Control",
+    icon: GitBranch, // ya Git icon
+    skills: [
+      { name: "Git", level: 82 },
+      { name: "GitHub", level: 80 },
+      { name: "VS Code", level: 85 },
+      { name: "IntelliJ IDEA", level: 80 },
+    ],
+  },
 ];
 
 const experience = [
@@ -262,7 +293,7 @@ const SkillLevel: React.FC<{ skill: { name: string; level: number }; index: numb
       </div>
       <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-primary/10">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-primary/60 to-primary transition-all duration-1000 ease-out"
+          className="h-full rounded-full bg-linear-to-r from-primary/60 to-primary transition-all duration-1000 ease-out"
           style={{ width: `${width}%` }}
         />
       </div>
@@ -471,14 +502,39 @@ function ResumePage() {
             </div>
 
             {/* Technical Skills */}
-            <div className="rounded-2xl border border-border bg-surface/50 p-6 backdrop-blur-sm">
-              <div className="flex items-center gap-3 mb-5">
+            <div className="space-y-4">
+              {/* Main heading */}
+              <div className="flex items-center gap-3">
                 <Code2 className="h-5 w-5 text-primary" />
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">Technical Skills</h2>
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">
+                  Technical Skills
+                </h2>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {skills.map((skill, index) => (
-                  <SkillLevel key={skill.name} skill={skill} index={index} />
+
+              {/* Har category ka alag card */}
+              <div className="grid gap-4 md:grid-cols-2">
+                {skillCategories.map((category) => (
+                  <div
+                    key={category.title}
+                    className="rounded-2xl border border-border bg-surface/50 p-5 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-primary/5"
+                  >
+                    {/* Category Header */}
+                    <div className="mb-4 flex items-center gap-2.5">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                        <category.icon className="h-4 w-4 text-primary" />
+                      </div>
+                      <h3 className="text-xs font-semibold uppercase tracking-wider text-primary">
+                        {category.title}
+                      </h3>
+                    </div>
+
+                    {/* Skills Grid */}
+                    <div className="space-y-3">
+                      {category.skills.map((skill, index) => (
+                        <SkillLevel key={skill.name} skill={skill} index={index} />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -491,7 +547,7 @@ function ResumePage() {
               </div>
               {experience.map((item) => (
                 <div key={item.role} className="relative border-l-2 border-primary/30 pl-5 pb-6 last:pb-0">
-                  <div className="absolute -left-[5px] top-0 h-2.5 w-2.5 rounded-full bg-primary" />
+                  <div className="absolute -left-1.25 top-0 h-2.5 w-2.5 rounded-full bg-primary" />
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
                       <h3 className="font-semibold">{item.role}</h3>
